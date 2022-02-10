@@ -20,9 +20,15 @@ app.use(express.json());
 // route
 app.use(routes);
 
-// server test
-app.use('/ping', (req, res) => {
-  return res.status(200).json({ message: 'pong' });
+// 처리할 수 없는 URL로 진입시 처리(not found)(필수!)
+app.use((req, res, next) => {
+  res.sendStatus(404);
+});
+
+// 에러 처리(필수!)
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.sendStatus(500);
 });
 
 // create server

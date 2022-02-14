@@ -17,7 +17,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// route
+// routeㅔㅐㄴㅅ
 app.use(routes);
 
 // 처리할 수 없는 URL로 진입시 처리(not found)(필수!)
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 // 에러 처리(필수!)
 app.use((error, req, res, next) => {
   console.error(error);
-  res.sendStatus(500);
+  res.sendStatus(500).json({ message: 'Something went wrong' });
 });
 
 // create server
